@@ -20,7 +20,7 @@ public class ArrayListTest<T> {
 	
 	private void runScenarios() {
 		
-		players = new ArrayList<>();
+		players = new ArrayList<T>();
 	}
 	
 	public List<T> getPlayers() {
