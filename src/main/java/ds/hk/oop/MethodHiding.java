@@ -11,8 +11,8 @@ public class MethodHiding extends Sub {
 
 	public static void main(String[] args) {
 
-		Child mh = null;
-		mh.printMethod();
+		Child ch = null;
+		ch.printMethod();
 		Super.printMethod();
 		Sub.printMethod();
 		

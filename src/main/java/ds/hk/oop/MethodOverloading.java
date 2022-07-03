@@ -46,4 +46,11 @@ class B2 extends A2 {
 	public void add(double a, double b) {
 		System.out.println("Double=> a+b: "+(a+b));
 	}
+	
+	//Over-loading not possible with return type
+	//Duplicate method add(double, double) in type B2
+	
+	/*public double add(double a, double b) {
+		System.out.println("Double=> a+b: "+(a+b));
+	}*/
 }
