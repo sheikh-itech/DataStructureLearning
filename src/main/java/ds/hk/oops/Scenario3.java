@@ -1,6 +1,6 @@
 package ds.hk.oops;
 
-/** 		“First Inherit, then Implement”
+/** 		First Inherit, then Implement
  * 		-----------------------------------------
  * 
  * If there is already implemented logic in any class (by chance),
