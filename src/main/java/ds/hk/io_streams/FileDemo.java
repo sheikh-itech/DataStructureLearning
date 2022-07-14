@@ -1,7 +1,10 @@
 package ds.hk.io_streams;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
+
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FileDemo {
 
@@ -16,6 +19,9 @@ public class FileDemo {
 		System.out.println("isFile(): "+file2.isFile());
 	
 		File file3 = new File(file1, "file1");
+		
+		File f = file3.getCanonicalFile();
+		System.out.println(f);
 		
 		boolean created = file3.createNewFile();
 		
@@ -32,5 +38,6 @@ public class FileDemo {
 		System.out.println(file5.isFile());
 		
 		new File("temp/files1/file2/file3/file4").mkdirs();
+		
 	}
 }
