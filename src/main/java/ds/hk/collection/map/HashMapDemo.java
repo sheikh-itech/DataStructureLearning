@@ -14,6 +14,8 @@ import java.util.Set;
  *				  (a, b) -> a+b;
  *	SingleFunction -> (a) -> { return a+1; }
  *					  (a) -> return a+1;
+ *
+ *	1. Maintains Natural Sorting Order
  */
 
 public class HashMapDemo {
@@ -24,8 +26,8 @@ public class HashMapDemo {
 		Map<Integer, String> entry2 = new HashMap<Integer, String>();
 		
 		entry1.put(1, "sheikh");
-		entry1.put(2, "hapheej");
 		entry1.put(3, "dummy");
+		entry1.put(2, "hapheej");
 		entry1.put(4, "dummy");
 		entry1.put(5, null);
 		entry1.put(null, null);

@@ -1,13 +1,13 @@
-package ds.hk.collection;
+package ds.hk.collection.map;
 
-public class Person {
+public class Pair1 implements Comparable<Pair1> {
 
 	private int id;
 	private String name;
 	
-	public Person(int id, String name){
-		this.name = name;
+	Pair1(int id, String name){
 		this.id = id;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -43,7 +43,7 @@ public class Person {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		Pair1 other = (Pair1) obj;
 		if (id != other.id)
 			return false;
 		if (name == null) {
@@ -59,4 +59,9 @@ public class Person {
 		return "{id=" + id + ", name=" + name + "}";
 	}
 
+	@Override
+	public int compareTo(Pair1 o) {
+		
+		return this.id - o.id;
+	}
 }

@@ -1,13 +1,13 @@
-package ds.hk.collection;
+package ds.hk.collection.map;
 
-public class Person {
+public class Pair {
 
 	private int id;
 	private String name;
 	
-	public Person(int id, String name){
-		this.name = name;
+	Pair(int id, String name){
 		this.id = id;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -43,7 +43,7 @@ public class Person {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		Pair other = (Pair) obj;
 		if (id != other.id)
 			return false;
 		if (name == null) {
@@ -58,5 +58,4 @@ public class Person {
 	public String toString() {
 		return "{id=" + id + ", name=" + name + "}";
 	}
-
 }
