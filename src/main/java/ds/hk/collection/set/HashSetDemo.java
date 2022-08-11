@@ -1,7 +1,10 @@
-package ds.hk.collection;
+package ds.hk.collection.set;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import ds.hk.collection.Employee;
+import ds.hk.collection.Person;
 
 /**	1. Having initial Capacity 16, load Factor 0.75
  *	2. No Duplicates Allowed if same reference address

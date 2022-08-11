@@ -5,7 +5,7 @@ public class Employee implements Comparable<Employee> {
 	private String name;
 	private int id;
 
-	Employee(int id, String name) {
+	public Employee(int id, String name) {
 		this.name = name;
 		this.id = id;
 	}

@@ -1,7 +1,10 @@
-package ds.hk.collection;
+package ds.hk.collection.set;
 
 import java.util.Set;
 import java.util.TreeSet;
+
+import ds.hk.collection.Employee;
+import ds.hk.collection.Student;
 
 /**
  *	1. Null's not allowed in TreeSet

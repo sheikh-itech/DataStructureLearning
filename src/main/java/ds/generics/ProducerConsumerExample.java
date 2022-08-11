@@ -14,7 +14,7 @@ public class ProducerConsumerExample {
 	      //We can assign a list of apples to a basket of fruits;
 	      //because apple is subtype of fruit 
 	      List<? extends Fruit> basket = apples;
-	       
+	      
 	      //Here we know that in basket there is nothing but fruit only
 	      for (Fruit fruit : basket)
 	      {

@@ -8,6 +8,7 @@ import java.util.Hashtable;
  * 	2. HashTable is thread-safe
  * 	3. All its method are declared synchronized
  * 	4. Supports object cloning
+ *  5. Full concurrency of retrievals and high expected concurrency for updates
  */
 
 public class HashTableDemo {

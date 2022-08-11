@@ -1,5 +1,6 @@
 package ds.hk.io_streams;
 
+import java.io.ObjectStreamField;
 import java.io.Serializable;
 
 public class Person implements Serializable {
@@ -57,9 +58,15 @@ public class Person implements Serializable {
 	public void setCountryCode(int countryCode) {
 		this.countryCode = countryCode;
 	}
+	
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", name=" + name + ", address=" + address + ", mobile=" + mobile + ", countryCode="
 				+ countryCode + "]";
 	}
+	
+	// Declare that only name and height fields are serializable
+	private static final ObjectStreamField[] serialPersistentFields
+    = {new ObjectStreamField("name", String.class),
+    		new ObjectStreamField("mobile", int.class)};
 }

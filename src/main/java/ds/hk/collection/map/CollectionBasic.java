@@ -1,4 +1,4 @@
-package ds.hk.collection;
+package ds.hk.collection.map;
 
 import java.util.HashMap;
 import java.util.Map;

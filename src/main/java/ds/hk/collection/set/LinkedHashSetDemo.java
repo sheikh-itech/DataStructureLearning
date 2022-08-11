@@ -1,7 +1,9 @@
-package ds.hk.collection;
+package ds.hk.collection.set;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+
+import ds.hk.collection.Person;
 
 /**	1. Ordered and Sorted [But No default Sorting]
  * 	2. Insertion Order, Natural Sorting

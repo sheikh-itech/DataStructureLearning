@@ -22,5 +22,12 @@ public class DeepClone {
 		System.out.println();
 		System.out.println("Test HashCode Before Clone: "+c1.getTest().hashCode());
 		System.out.println("Test HashCode After Clone: "+c2.getTest().hashCode());
+		
+		Immutable im1 = new Immutable();
+		
+		Immutable im2 = im1.clone();
+		
+		System.out.println(im1==im2);
+		System.out.println(im1.fieldHash()==im2.fieldHash());
 	}
 }

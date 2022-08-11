@@ -25,6 +25,14 @@ public class TreeMapDemo {
 
 	public static void main(String[] args) {
 		
+		Map<Integer, Pair> pairs = new TreeMap<Integer, Pair>();
+		pairs.put(1, new Pair(1, "abc1"));
+		pairs.put(5, new Pair(5, "abc5"));
+		pairs.put(4, new Pair(4, "abc4"));
+		pairs.put(3, new Pair(3, "abc3"));
+		pairs.put(2, new Pair(2, "abc2"));
+		System.out.println("Pairs: "+pairs);
+		
 		Map<Integer, String> names = new TreeMap<Integer, String>();
 		
 		names.put(3, "mansoori");

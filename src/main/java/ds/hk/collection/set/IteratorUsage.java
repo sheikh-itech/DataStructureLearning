@@ -1,4 +1,4 @@
-package ds.hk.collection;
+package ds.hk.collection.set;
 
 import java.util.HashSet;
 import java.util.Iterator;
