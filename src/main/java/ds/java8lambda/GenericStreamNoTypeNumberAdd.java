@@ -1,4 +1,4 @@
-package ds.generics.functional;
+package ds.java8lambda;
 
 /**
  * @author Hapheej

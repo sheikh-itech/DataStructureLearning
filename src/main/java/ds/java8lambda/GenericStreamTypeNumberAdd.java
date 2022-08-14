@@ -1,4 +1,4 @@
-package ds.generics.functional;
+package ds.java8lambda;
 
 public class GenericStreamTypeNumberAdd {
 
@@ -20,7 +20,17 @@ public class GenericStreamTypeNumberAdd {
 		double num2=0.0;
 		System.out.println(num1>num2); //false
 		System.out.println(num2>num1); //false
+		
+		Adds<Number> adds = (Number[] arg) -> {
+			long sum=0L;
+			for(Number o:arg) {
+				sum=sum+Long.valueOf(o.toString());
+			}
+			return sum;
+		};
 
+		System.out.println(adds.goOn(1,2));
+		System.out.println(adds.goOn(1,2,3,4,5,6,7,8,9,10));
 	}
 
 }
@@ -33,4 +43,9 @@ public class GenericStreamTypeNumberAdd {
 @FunctionalInterface
 interface Add<I extends Number> {
 	I process(I value1, I value2);
+}
+
+@FunctionalInterface
+interface Adds<T extends Number> {
+	T goOn(T ...value);
 }
