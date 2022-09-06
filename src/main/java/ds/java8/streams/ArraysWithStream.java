@@ -43,6 +43,8 @@ public class ArraysWithStream {
 
 		long count = IntStream.range(0, chars.length).mapToObj(i->chars[i]).count();
 		
+		List<Character> chrs = IntStream.range(0, chars.length).mapToObj(i->chars[i]).collect(Collectors.toList());
+		
 		arrayToIntList = 
 				new String(chars).chars().collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 		arrayToIntList = 
@@ -106,10 +108,12 @@ public class ArraysWithStream {
 	//Predicate Supply
 		Predicate<Character> predicate = e->(e>110);
 		allMatchedCondition = Arrays.stream(characters).allMatch(predicate);
+	//Reduce
 		
+		OptionalInt sum = Arrays.stream(nums).reduce((x, y)->x+y);
+		int minus = Arrays.stream(nums).reduce(0, (x, y)->x-y);
+
 		System.out.println(arrayToIntList);
-		System.out.println((int)'f');
-		
 	}
 
 	static int[] getIntArray() {
