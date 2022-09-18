@@ -19,7 +19,7 @@ public class Converter {
 
 }
 
-@FunctionalInterface
+@FunctionalInterface	//Not Compulsory
 interface Convert<F, T> {
     T convert(F from);
 }

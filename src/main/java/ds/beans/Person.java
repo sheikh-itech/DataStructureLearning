@@ -14,17 +14,31 @@ public class Person {
 		MALE, FEMALE
 	};
 	
-	private String name;
+	private String firstName;
+	private String lastName;
 	private String email;
 	private LocalDate birthDate;
 	private Sex gender;
 
 	
-	public String getName() {
-		return name;
+	
+	public Person(String firstName, String lastName, Sex gender) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getEmail() {
 		return email;
@@ -46,6 +60,6 @@ public class Person {
 	}
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", gender=" + gender + "]";
+		return "Person{firstName: " + firstName + ", lastName: " + lastName + "}";
 	}
 };

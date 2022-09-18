@@ -1,4 +1,4 @@
-package ds.java8lambda.oreilly.data;
+package ds.beans;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ import java.util.List;
  * @author Hapheej
  *
  */
-public class ArrayListProvider {
+public class DataProvider {
 
 	public static List<Integer> getIntList() {
 		

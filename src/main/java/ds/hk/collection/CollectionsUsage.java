@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
-import ds.java8lambda.oreilly.data.ArrayListProvider;
+import ds.beans.DataProvider;
 
 /**
  *	1. Having static methods those operates ON Or Return Collection/Map [subclasses]
@@ -64,7 +64,7 @@ public class CollectionsUsage {
 		System.out.println("List: "+nums);
 		int index = Collections.binarySearch(nums, 5);
 		System.out.println("Index of 5 'BinarySearch': "+index);
-		List<Integer> list = ArrayListProvider.getIntList(9);
+		List<Integer> list = DataProvider.getIntList(9);
 		System.out.println("New List: "+list);
 		nums.add(17);
 		nums.add(18);

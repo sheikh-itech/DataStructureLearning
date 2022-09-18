@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import ds.java8lambda.oreilly.data.ArrayListProvider;
+import ds.beans.DataProvider;
 
 /**
  * @author Hapheej
@@ -24,7 +24,7 @@ public class BasicStreamExample {
 				new Album("solo", "Canada", "instrumental"));
 		
 		// By default streams are lazy initialized, so below statement will not print
-		ArrayListProvider.getIntList().stream().filter(e ->{System.out.println(e); if(e%2==0) return true;
+		DataProvider.getIntList().stream().filter(e ->{System.out.println(e); if(e%2==0) return true;
 		return false;});
 		
 		// To make streams eager, terminal/initializer method call needed
@@ -32,7 +32,7 @@ public class BasicStreamExample {
 		return false;}).count();
 		
 		//Collect toList()
-		List<Integer> intList = ArrayListProvider.getIntList().stream().collect(Collectors.toList());
+		List<Integer> intList = DataProvider.getIntList().stream().collect(Collectors.toList());
 		
 		intList = Stream.of(1,2,3,4,5).collect(Collectors.toList());
 		
@@ -42,7 +42,7 @@ public class BasicStreamExample {
 				 .collect(Collectors.toList());
 		
 		//MAP
-		collected = ArrayListProvider.getStringList().stream().map(val -> 
+		collected = DataProvider.getStringList().stream().map(val -> 
 			val.toUpperCase()).collect(Collectors.toList());
 
 		//Filter

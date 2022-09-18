@@ -1,9 +1,6 @@
 package ds.common;
 
-/**
- * @author Hapheej
- *
- */
+
 public class ConditionalScenarios {
 
 
