@@ -1,6 +1,9 @@
 package ds.test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -24,6 +27,9 @@ public class App {
 		t.add(t1);
 		t.add(t1);
 		t.forEach(a->System.out.println(a.id));
+		
+		List<Temp1> l = new ArrayList<>();
+		Collections.sort(l, (o1, o2) -> o1.num - o2.num);
 	}
 }
 
@@ -50,6 +56,11 @@ class Test12 {
 		if (id != other.id)
 			return false;
 		return true;
-	}
+	}	
+}
+
+class Temp1 {
+	int num;
+	String xyz;
 	
 }
