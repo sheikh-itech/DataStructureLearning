@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import ds.beans.Person;
+import learn.ds.beans.Person;
 
 /**
  * @author Hapheej

@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import ds.beans.Person;
-import ds.beans.Person.Sex;
+import learn.ds.beans.Person;
+import learn.ds.beans.Person.Sex;
 
 public class BeansProcessingUsingLambda {
 

@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-import ds.beans.Person;
-import ds.beans.Person.Sex;
+import learn.ds.beans.Person;
+import learn.ds.beans.Person.Sex;
 
 public class ConsumerExcersize {
 

@@ -5,7 +5,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import ds.beans.DataProvider;
+import learn.ds.beans.DataProvider;
 
 public class LambdaExceptionHandling {
 
