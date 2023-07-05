@@ -2,10 +2,12 @@ package ds.sorting;
 
 import java.util.Comparator;
 
-public class EmployeeSortBySalary implements Comparator<learn.ds.beans.Employee> {
+import ds.beans.Employee;
+
+public class EmployeeSortBySalary implements Comparator<Employee> {
 
 	@Override
-	public int compare(learn.ds.beans.Employee e1, learn.ds.beans.Employee e2) {
+	public int compare(Employee e1, Employee e2) {
 		
 		int result = 0;
 		if(e1.getSalary() == e2.getSalary()) {

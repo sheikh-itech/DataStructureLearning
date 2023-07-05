@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
-import learn.ds.beans.DataProvider;
+import ds.beans.DataProvider;
 
 /**
  *	1. Having static methods those operates ON Or Return Collection/Map [subclasses]

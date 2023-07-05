@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import learn.ds.beans.Address;
-import learn.ds.beans.Employee;
+import ds.beans.Address;
+import ds.beans.Employee;
 
 public class Test {
 
