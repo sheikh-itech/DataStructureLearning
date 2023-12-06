@@ -1,0 +1,39 @@
+Data Structure
+--------------
+Way of collecting and organizing data to perform operations on these data effectively
+
+Linear: array
+Non-Linear: graph, tree
+Homogeneous: integer array
+Non-Homogeneous: class, struct
+Static: array
+Dynamic: list
+
+Algorithm
+---------
+Finite set of instructions/logic, written in order to achieve goal
+It can be demonstrated using pseudo-code or flowchart
+
+Input- 0 or more inputs
+Output- at-least 1 output
+Definiteness- Every step of the algorithm should be clear and well defined
+Finiteness- Finite number of steps
+Correctness- Every step of the algorithm must generate a correct output
+
+Space Complexity
+----------------
+Amount of memory space required by the algorithm
+Instruction Space:
+Data Space:
+Environment Space:
+
+Time Complexity
+---------------
+
+
+Types of Asymptotic Notations
+-----------------------------
+1. Big Theta (Θ)	=>average time or range
+2. Big Oh(O)		=>Worst case
+3. Big Omega (Ω)	=>best case
+
