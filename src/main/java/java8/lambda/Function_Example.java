@@ -45,5 +45,8 @@ public class Function_Example {
 		System.out.println(nums);
 		
 		nums.forEach(num->System.out.print(func4.apply(num)+", "));
+		
+		Set<String>chars = Arrays.asList("A", "B", "C", "D", "E").stream().map(Function.identity()).collect(Collectors.toSet());
+		System.out.println("\n"+chars);
 	}
 }

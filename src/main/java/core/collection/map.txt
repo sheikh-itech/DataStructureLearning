@@ -1,0 +1,14 @@
+
+Map does not implement Collection interface
+
+Features
+--------
+Each entry contains key-value pairs
+Contains only Unique keys
+Each key maps to single value/object only
+
+Order
+-----
+HashMap	-> no order
+TreeMap	-> natural order
+LinkedHashMap	-> insertion order

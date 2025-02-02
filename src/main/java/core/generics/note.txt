@@ -1,0 +1,84 @@
+Generic's introduced in Java 5 to provide type safety, 
+making code more reliable and reusable by catching type errors at compile time
+
+Powerful feature that enables you to define classes, interfaces, 
+and methods with type parameters
+
+With generic's, we can define a single class, interface, or method 
+that works with different data types, reducing code duplication
+
+
+Bounded Type Parameters
+-----------------------
+We can restrict a type parameter to a specific class or interface, known as bounds
+
+We might want to ensure a type parameter extends a specific superclass or implements an interface
+
+Wildcard in Generics
+--------------------
+The wildcard character (?) allows you to use unknown types, 
+which is useful when working with classes or methods that handle any type
+
+1. Unbounded Wildcard: <?> => Accepts any type
+2. Upper-Bounded Wildcard: <? extends T> => Accepts T or its subclasses
+3. Lower-Bounded Wildcard: <? super T> => Accepts T or its super-classes
+
+Advantages of Generics
+======================
+
+1.Type Safety: Detects errors at compile time instead of at runtime
+2.Code Reusability: Allows you to create flexible, reusable code that works with different data types
+3.Elimination of Type Casting: Reduces the need for explicit casting
+
+Limitations of Generics
+=======================
+1.Type Erasure: Java generics use type erasure, meaning the compiler removes generic type 
+information at runtime.
+As a result, you can’t use generic type parameters with primitives
+(e.g., List<int> is invalid; use List<Integer> instead)
+
+2.No Instance of Generic Types: You can't create instances of a type parameter
+(e.g., new T() is invalid)
+
+
+1. Multiple Bounded Type Parameters
+-----------------------------------
+Java allows multiple bounds, meaning a type parameter can be constrained by more than one type.
+When using multiple bounds, class types must be listed first, followed by interfaces
+
+=> class DataProcessor<T extends Number & Comparable<T>> {}
+
+2. Generic Interfaces
+---------------------
+A generic interface allows any class that implements it to specify a concrete type parameter
+
+=> interface Storage<T> {}
+=> class ListStorage<T> implements Storage<T> {}
+
+3. Self-Bounded Types
+---------------------
+Self-bounding generics are used when a generic class or interface references itself as a bound.
+This pattern enforces that subclasses must return their own type, 
+commonly used in builder patterns
+
+=> class ComparableBox<T extends ComparableBox<T>> {}
+
+4. Generic Constructors
+-----------------------
+Generic constructors in a non-generic class to initialize objects with flexible types
+
+public class Printer {
+    private Object item;
+
+    public <T> Printer(T item) {
+        this.item = item;
+    }
+
+    public void print() {
+        System.out.println(item);
+    }
+}
+
+
+
+

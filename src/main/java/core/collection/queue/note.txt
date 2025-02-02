@@ -1,0 +1,1 @@
+Blocking Queues are used when 2 threads want to communicate

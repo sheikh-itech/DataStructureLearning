@@ -1,0 +1,6 @@
+
+Stream=> Converting collections (List/Set/Array/Map) using declarative functionality
+
+Benefits=> Readability, Parallelism, Flexibility
+
+

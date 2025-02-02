@@ -1,0 +1,10 @@
+Lets see how may patterns can created using Generics
+
+Singleton Pattern
+-----------------
+Generics can simplify the creation of singleton instances by enforcing 
+a single instance per type parameter
+
+useful when you want a singleton instance of different types without writing 
+multiple singleton classes
+

@@ -1,0 +1,51 @@
+From=> https://www.youtube.com/@EngineeringDigest/playlists
+
+Old Java Data Structure before java 1.2
+---------------------------------------
+Vector, Stack, Array, Hashtable
+
+Drawbacks
+---------
+No common interface
+Lack of inter-operability
+
+
+=>To overcome problems collections introduced in java 2 or 1.2
+
+
+Collection => Root interface of all collections
+
+List => An ordered collection can contain duplicate [ArrayList, LinkedList]
+
+Set => Unique element collection [HashSet, TreeSet]
+
+Queue => Collection to hold elements prior to process [PriorityQueue, LinkedList when used as queue]
+
+Deque (Dek) => Double-ened queue that allows insertion & deletion from both end [ArrayDeque]
+
+Map => Holds key-value pairs [HashMap, TreeMap]
+
+List Feature
+------------
+1. Order preservation
+2. Index based access
+3. Allows duplicate
+4. Zeroth index based
+
+ArrayList
+---------
+Initial capacity: 10
+
+ArrayList Time Complexity
+-------------------------
+Access By Index: O(1)
+Add Element: O(n)->worst case if resizing or specific index addition
+Remove Element: O(n) -> worst case if element shift required & removed first element
+Iteration: O(n)
+
+
+
+
+
+
+

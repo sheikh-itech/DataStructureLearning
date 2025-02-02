@@ -1,0 +1,509 @@
+
+New ----> Runnable ----> Running ----> Terminated
+             |               ^
+             |               |
+             v               |
+        Blocked/Waiting -----|
+
+
+A thread is an independent path of execution in a program.
+Multiple threads run simultaneously to perform different tasks
+
+Multithreading is a feature that allows concurrent execution of two or more threads 
+for maximum utilization of the CPU (CPU Core)
+
+Thread is a lightweight subprocess since-
+	=>Shared Memory Space [Shares-> Code, Data, Global Variables, Open Files]
+	=>Creating a thread is faster and requires fewer system resources than creating a new process
+	=>Switching between threads is faster than switching between processes [Same Port/Address]
+	=>Inter-Thread Communication is Faster [No need to switch context, sockets]
+	=>No Separate Operating System Scheduling [Managed by same task (main thread)]
+	=>Smaller Stack Size compared to Process [Less memory]
+
+Microsoft word having multiple threads running inside in same Process
+Google chrome might use threads for each Tabs
+
+Multi Tasking
+=============
+Allows OS to run multiple process simultaneously
+
+[Sometimes chrome hangout but eclipse runs means one process in waiting and other running]
+
+Multitasking uses-
+	=>Separate memory address
+	=>CPU Usage Higher-> Context switching involves saving/restoring process states
+	=>Processes do not share resources OR rarely in some cases
+	=>Each process having separate stack 
+
+In Single-Core System, 2 threads/process managed by OS Scheduler 
+using "Time Slicing & Context Switching" to create illusion of simultaneous execution [Fast run]
+
+Time Slicing
+============
+
+Divided CPU run time into small intervals known as Time Slice OR Quanta
+
+Function: OS Scheduler allocates these Time-Slice to each Process, ensuring that each Process
+			should get fair time for execution
+
+JVM With Thread
+===============
+Once we executes any java program [java Hello.class], One main thread starts which executes
+our main method
+
+What Happens When we Run java Hello.class?
+==========================================
+
+1. The java command launches JVM
+2. JVM starts a new process in the operating system
+3. Inside the process, the JVM creates the main thread
+4. JVM loads class bytes and verify
+5. Main thread calls main method
+
+Note: By default, JVM runs a single thread (the main thread)
+
+[OS Process]
+   |
+   -> [JVM]
+         |
+         -> [Main Thread] ---> Executes 'main(String[] args)'
+               |
+               -> Additional Threads (if created)
+
+Create Thread
+=============
+	1. Using Thread
+	2. Using Runnable
+
+
+Thread Life Cycle States
+========================
+
+1. New (Created)
+		A thread is created but has not yet started
+		Thread t = new Thread();
+		
+2. Runnable
+		Thread is ready to run and waiting for the CPU scheduler to assign execution time
+		After calling t.start(), the thread moves to this state
+		
+3. Running
+		The CPU scheduler selects it from the runnable pool for execution
+
+4. Blocked/Waiting
+		The thread is temporarily inactive
+		waiting for a resource, another thread's signal
+	
+5. Terminated (Dead)
+		The thread has completed execution and cannot be restarted
+		run() method finishes execution
+
+Thread Methods
+==============
+
+join(): Waits for a thread to finish execution
+isAlive(): Checks if a thread is active
+wait(): Makes a thread wait
+notify(): Wakes up a waiting thread
+notifyAll(): Wakes up all waiting threads
+
+
+Race Condition
+==============
+Multiple threads waits to access shared resource, can prevent this using synchronization
+
+We can fix race conditions by synchronizing access to the shared resource
+
+Locking
+=======
+Preventing shared resources to be accessed one-by-one by multiple threads
+
+	Intrinsic Lock
+	--------------
+	Built into every java object but hidden, when we use synchronized keyword
+	we do use this lock -> synchronized void increment(){}
+	
+	In synchronized methods, class object automatically gets locked Intrinsically
+	
+	Extrinsic Lock
+	--------------
+	They are defined by developer using 'Lock' class
+	Developer having more control
+
+Deadlock
+========
+A deadlock occurs when two or more threads are waiting for each other to release locks on 
+resources, causing an infinite waiting loop
+
+Or same thread waits to acquire it's own lock [Reentrant lock take cares it]
+
+How to Avoid Deadlocks?
+=======================
+
+	Lock Ordering: Always acquire locks in a specific, consistent order
+	
+	Try-Lock with Timeout: Use tryLock() 
+			(from ReentrantLock) with a timeout to avoid indefinite waiting
+		
+	Avoid Nested Locks: Minimize the use of nested synchronized blocks or lock acquisition
+
+Starvation in Multithreading
+============================
+Starvation occurs in multi-threading when a thread is unable to gain access to the required 
+resources (like CPU, locks, etc.) because other threads with higher priority or 
+resource-hogging behavior prevent it from accessing
+
+Causes of Starvation
+====================
+	Thread Priority
+	Locks/Resource Access
+	Inefficient Scheduling [Poor thread scheduling by the operating system or JVM]
+	Unfair Synchronization [synchronized or non-fair ReentrantLock use]
+
+How to Prevent Starvation
+=========================
+	Fair Scheduling
+	Fair Locks [ReentrantLock true]
+	Avoid Priority Misuse
+	Use yield()
+	Use Modern Executors
+		Use thread pools (via Executors) instead of manually managing threads to 
+		balance workloads efficiently
+
+Drawbacks of synchronized in Java
+=================================
+The synchronized keyword in Java is a simple and effective way to implement thread safety,
+but it comes with certain drawbacks and limitations
+
+	Performance Overhead
+	--------------------
+	Cost of acquiring and releasing locks is high
+	
+	Potential for Deadlock
+	----------------------
+	Improper use of nested synchronized blocks or acquiring locks in an inconsistent order 
+	can lead to deadlocks
+	
+	Thread Blocking
+	---------------
+	Threads that cannot acquire the lock are blocked rather than being allowed to perform 
+	other useful tasks. This can lead to inefficient CPU utilization.
+	
+	Lack of Fine-Grained Control
+	----------------------------
+	The synchronized keyword does not provide advanced lock features like-
+		
+		Timeouts: Cannot specify how long a thread should wait for a lock
+		Interruptibility: Cannot interrupt a thread waiting for a lock
+		Try-Lock Mechanism: No mechanism to try acquiring a lock without blocking indefinitely
+		
+	Applies to Entire Method or Block
+	---------------------------------
+	Usable only method or block level
+	
+	No Fairness
+	-----------
+	A thread waiting for a long time may still be blocked if other threads continuously 
+	acquire the lock
+	
+	Cannot Check Lock Status
+	------------------------
+	The synchronized keyword does not allow you to check whether a lock is currently held
+	or released, or held by which thread
+
+	Inflexibility in Reentrancy
+	---------------------------
+	In case of synchronized Reentrancy need more care
+
+ReentrantLock in Java
+=====================
+It provides explicit locking mechanisms with more flexibility compared to synchronized
+It is reentrant, meaning the same thread can acquire same lock multiple times without 
+causing a deadlock
+
+Features of ReentrantLock
+=========================
+	
+	Fair vs. Non-Fair Locking
+	-------------------------
+		Fair Lock (new ReentrantLock(true)): Gives priority to waiting threads
+	
+		Non-Fair Lock (new ReentrantLock(false)) (Default): 
+			Can allow a thread to "jump the queue" for better performance
+	
+	Try-Lock (Avoids Blocking)
+	--------------------------
+		Unlike synchronized, ReentrantLock allows attempting to acquire a lock without 
+		blocking indefinitely
+		
+	Interruptible Locking
+	---------------------
+		A thread can interrupt another waiting thread
+		lock.lockInterruptibly(); // Allows thread interruption while waiting for lock
+		
+	Reentrant Property
+	------------------
+		The same thread can acquire the lock multiple times without deadlocking itself
+
+		lock.lock();
+		lock.lock(); // Allowed for the same thread
+		lock.unlock();
+		lock.unlock();
+	
+
+Why Use ReentrantLock?
+----------------------
+Fine-Grained Control – Offers better control over locking mechanisms compared to synchronized
+Fair Locking Option – Can prioritize waiting threads using fair mode (new ReentrantLock(true))
+Interruptible Locks – A waiting thread can be interrupted while waiting for a lock
+Try-Lock Feature – A thread can attempt to acquire a lock without blocking indefinitely
+
+
+Reentrant Read Write Lock in Java
+=================================
+It is an advanced lock in Java that allows multiple threads to read a resource simultaneously 
+while ensuring that only one thread can write at a time.
+
+Multiple thread can only acquire lock if write lock free for all threads
+
+	Read Lock:
+		Allows multiple threads to acquire the read lock at the same time
+		Cannot be acquired if a thread is holding the write lock
+
+	Write Lock
+		Allows only one thread to acquire the write lock
+		Blocks all other threads (both readers and writers) until it is released
+	
+Key Features
+------------
+	Improves Performance – Multiple threads can read concurrently
+	Reentrant – A thread holding a lock can re-acquire it
+	Supports Fairness – Can be configured to give priority to waiting threads
+	Separate Read and Write Locks – Prevents unnecessary blocking when only reads occur
+	
+Disadvantage
+------------
+Complexity
+Write Priority Issue
+Higher overhead than synchronized due to managing separate locks
+
+When To Use Read/Write Lock
+---------------------------
+When reads are more frequent than writes (e.g., caching, shared configuration data)
+When improving concurrency in applications with heavy read workloads
+
+
+Executor Framework in Java 5
+============================
+The Executor Framework in Java provides a flexible and efficient way to manage multithreading 
+by handling thread creation, execution, and management behind the scenes
+
+Introduced to simplify concurrent application development by abstracting complexities and
+managing threads
+
+Part of java.util.concurrent package
+
+Better Thread Management: Unlike manually creating threads (new Thread()), 
+						  the executor reuses a pool of threads, reducing overhead
+
+Improves Performance: Avoids the cost of creating/destroying threads repeatedly
+
+Provides Thread Pools: Controls concurrency with fixed, cached, and scheduled thread pools
+
+Supports Asynchronous Execution: Runs tasks in the background without blocking the main thread
+
+Executor Framework Components
+=============================
+
+	Executor
+	--------
+	Basic interface for executing tasks asynchronously
+	
+	ExecutorService
+	---------------
+	Extends Executor to provide lifecycle management (shutdown(), submit())
+	
+	ScheduledExecutorService
+	------------------------
+	Extends ExecutorService for scheduling tasks (schedule(), scheduleAtFixedRate())
+	 
+
+Types of Executors in Java
+==========================
+
+1. Fixed Size Pool:
+			Creates a fixed number (n) of threads
+			Best for CPU-bound tasks (limited resources)
+					
+	ExecutorService fixedPool = Executors.newFixedThreadPool(3);
+
+2. Dynamic Pool:
+			Creates threads as needed, reuses idle threads
+			Best for many short-lived tasks
+			
+	ExecutorService cachedPool = Executors.newCachedThreadPool();
+
+3. One Thread:
+		Executes tasks one at a time
+		Best for sequential execution (e.g., logging)
+	
+	ExecutorService singleThread = Executors.newSingleThreadExecutor();
+	
+4. Scheduled Tasks:
+		Executes tasks with delays or periodic execution
+		Best for timed or recurring tasks
+		
+	ScheduledExecutorService scheduledPool = Executors.newScheduledThreadPool(2);
+	
+Handling Task Submission
+========================
+
+1. Using execute(..) [Fire & Forget]:
+		Used for Runnable tasks
+		Doesn't return any result
+		
+	executor.execute(new MyTask());
+
+2. Using submit() [Returns Future]:
+		Returns a Future<T> object
+		Used for Callable tasks that return results
+		
+	Future<Integer> result = executor.submit(() -> 10 + 20);
+	System.out.println(result.get()); // Waits for the result (30)
+	
+
+Using Callable and Future [Returning Results]
+=============================================
+
+	Callable<T> is used when a task returns a value
+	Best for CPU-intensive calculations where a result is needed
+
+Delayed Execution
+=================
+
+	Use ScheduledExecutorService to schedule tasks with delays or at fixed intervals
+	
+	1. One-time Delayed Task
+		
+		ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
+		scheduler.schedule(() -> System.out.println("Delayed Task"), 3, TimeUnit.SECONDS);
+	
+	2. Periodic Task (Fixed Rate)
+		Runs a task every 2 seconds, regardless of execution time
+		
+		scheduler.scheduleAtFixedRate(() -> System.out.println("Repeating Task"), 0, 2, TimeUnit.SECONDS);
+		
+	3. Periodic Task (Fixed Delay)
+		Runs a task 2 seconds after the previous task finishes
+		Use Case: Log file monitoring, database cleanup, periodic updates
+		
+		scheduler.scheduleWithFixedDelay(() -> System.out.println("Task with delay"), 0, 2, TimeUnit.SECONDS);
+		
+		
+Shutting Down Executors
+=======================
+
+	1. shutdown()
+			Gracefully shuts down the executor
+			Already submitted tasks finish execution
+			
+		executor.shutdown();
+
+	2. shutdownNow()
+			Immediately stops all running & waiting tasks
+			
+		executor.shutdownNow();
+		
+	3. awaitTermination()
+			Waits for tasks to finish execution within a time limit
+			
+		executor.awaitTermination(5, TimeUnit.SECONDS);
+
+Effectively Final
+-----------------
+Once initialized any variable, value can't be re-initialized
+
+
+CountDownLatch in Java
+======================
+CountDownLatch is a synchronization mechanism in Java used to block threads until 
+a specific number of operations are completed
+
+Ensure that tasks start or finish in a controlled manner
+
+=> Ensures that a thread waits until others finish
+=> Useful for parallel processing where threads must synchronize at a certain point
+=> Prevents race conditions by forcing order of execution
+=> Thread-safe (handles concurrency internally)
+
+Limitation
+==========
+	
+		One-time use: Once the count reaches zero, it cannot be reset
+		Not reusable: For multiple cycles, use CyclicBarrier instead
+
+CyclicBarrier
+=============
+CyclicBarrier is a synchronization mechanism that allows a group of threads to wait for each 
+other at a common barrier point before proceeding further
+
+Reusable: Unlike CountDownLatch, the barrier resets after all threads reach it
+Optional Runnable Action: Runs a task once all threads reach the barrier
+Synchronizes multiple threads: Ensures that all threads reach a point before continuing
+Thread-safe: Manages concurrent access efficiently
+
+Limitations of CyclicBarrier
+============================
+	Threads must be known in advance (fixed number required)
+	Cannot reduce the number of parties dynamically
+	If one thread crashes, all others remain blocked indefinitely (unless handled)
+	
+CyclicBarrier(int parties):
+		Creates a barrier for N threads
+		
+CyclicBarrier(int parties, Runnable barrierAction):
+		Executes barrierAction once all threads reach the barrier
+		
+await():
+		Makes the thread wait until all threads reach the barrier
+		
+await(long timeout, TimeUnit unit):
+		Waits for a limited time, then proceeds if not all threads arrive
+		
+getParties():
+		Returns the total number of threads required
+		
+getNumberWaiting():
+		Returns how many threads are waiting at the barrier
+		
+isBroken():
+		Checks if the barrier is broken (due to interruption)
+		
+reset():
+		Manually resets the barrier (useful if a thread crashes)
+
+
+CompletableFuture
+=================
+CompletableFuture is a powerful and flexible way to handle asynchronous programming in Java
+Provides non-blocking, reactive programming capabilities
+
+=>Handles async operations easily (no need for callbacks or explicit threads)
+=>Supports chaining & composition (thenApply(), thenCombine(), etc.)
+=>Non-blocking execution (supplyAsync(), runAsync())
+=>Handles errors (exceptionally(), handle())
+=>Parallel processing (Combining multiple async tasks)
+
+Limitation
+----------
+	Difficult debugging
+	Not a replacement for all multithreading scenarios like threadd pooling
+
+Key Points
+----------
+CompletableFuture is best for async programming in Java
+Use supplyAsync() when returning results and runAsync() for void tasks
+Chain operations using thenApply() and handle multiple tasks using thenCombine() or allOf()
+Use exceptionally() to handle errors gracefully
+
+

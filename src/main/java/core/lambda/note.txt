@@ -1,0 +1,71 @@
+
+1. Lambda expression enables functional programming features
+2. Lambda expressions are an anonymous function
+3. Can pass lambda expression as an argument
+4. Lambda can only used with functional interface
+
+Functional Interface
+--------------------
+Functional interface is any interface with exactly one abstract method
+can use @FunctionalInterface but optional if single method
+
+Syntax
+------
+(parameters) -> expression
+(parameters) -> { statements; }
+
+Package Issue
+-------------
+package name [java.core, java.core.lambda] does not works
+
+Built-in Functional Interfaces
+==============================
+
+Predicate<T>
+------------
+Boolean-valued function of one argument
+Predicate<String> isEmpty = s -> s.isEmpty();
+
+Function<T, R>
+--------------
+Function takes one argument and produces a result
+Function<String, Integer> lengthFunc = s -> s.length();
+
+Consumer<T>
+-----------
+Operation that accepts a single argument and returns no result
+Consumer<String> print = s -> System.out.println(s);
+
+Supplier<T>
+-----------
+Represents a supplier of results with no arguments
+Supplier<Double> randomValue = () -> Math.random();
+
+Functional Interface Examples
+-----------------------------
+1. Runnable => method: void run
+2. Comparator<T> => method: int compare(T o1, T o2)
+3. Callable<V> => method: V call()
+
+
+BiFunction
+----------
+Takes two arguments and returns a result
+This is useful for calculations or transformations involving two inputs
+
+Currying and Partial Application
+--------------------------------
+Currying and partial application are advanced techniques where we create a function that 
+returns another function with some of the parameters already set
+
+Higher-Order Functions
+----------------------
+A higher-order function is a function that takes other functions as arguments 
+or returns a function.
+This technique is useful for customizing behavior
+
+Memoization with Lambdas
+------------------------
+Memoization is a technique for optimizing expensive function calls by caching results.
+Lambdas can be used with maps to create memoized functions
+

@@ -1,0 +1,69 @@
+	Internal Working
+   ------------------
+
+Key --> Value --> Hash Function --> Bucket
+
+Hash Function
+-------------
+A function that computes an integer (hash code) from the key
+
+Converts the key into a hash code to determine the bucket 
+in which the key-value pair will be stored
+
+The hash code is further processed using a hashing algorithm to map it to a specific bucket
+
+bucketIndex = hash(key) % capacity	[bucketIndex = hash-code % arraySize/capacity]
+
+Bucket
+------
+A storage location for key-value pairs within the HashMap
+
+Each bucket can hold multiple key-value pairs in case of hash collisions
+
+Collisions are resolved using a linked list (Java 7 and earlier) or 
+a balanced tree (Java 8 and later) within the bucket
+
+Keys with the same hash code (or hash bucket index) are grouped in the same bucket
+
+**The equals() method is used to identify the correct key-value pair within the bucket
+
+If number of elements exceed to 8, LinkedList converts to Balanced Tree
+& if bucket elements reduced to 6, it again becomes LinkedList
+
+
+Entry Set
+---------
+We can directly iterate over the entries (key-value pairs), reducing overhead & lookup.
+Useful for operations that involve both keys and values simultaneously
+**By returning a Set, entrySet ensures compatibility with the rich API provided by 
+  Set interface, such as iteration, stream processing, and filtering
+
+for (K key : map.keySet()) {
+    V value = map.get(key); // Inefficient: performs a lookup for each key using get call
+}
+----
+
+for (Map.Entry<K, V> entry : map.entrySet()) {	//Directly returns key & value set
+    K key = entry.getKey();
+    V value = entry.getValue();
+}
+
+entrySet allows modifications to map while iterating through entries without requiring 
+explicit calls to put or remove
+
+for (Map.Entry<K, V> entry : map.entrySet()) {
+    if (entry.getValue().equals(someCondition)) {
+        entry.setValue(newValue); // Directly modifies the map
+    }
+}
+-----
+
+EntrySet Features
+-----------------
+1. Efficient Iteration
+2. Direct Access to Both Key & Value
+3. Supports Map Modification
+4. Improved Readability
+5. Integration with Streams
+
+

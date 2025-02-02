@@ -14,4 +14,8 @@ public interface DefaultMethod {
 	default double sqrt(int number) {
 		return Math.sqrt(number);
 	}
+	
+	default double sin(int number) {
+		return Math.sin(number);
+	}
 }

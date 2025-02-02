@@ -52,6 +52,7 @@ public class BiConsumer_Example {
         
         equals.accept(lista, listb);
         
+        System.out.println("\n andThen() method usage \n========================");
      // Using addThen() method
         equals.andThen(disp).accept(lista, listb);
 	}
