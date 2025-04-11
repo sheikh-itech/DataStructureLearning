@@ -128,7 +128,7 @@ public class EngineeringDigestStreamDemo {
 		System.out.println(fruits.get(1).get(1));
 		
 		List<String> newFruits = fruits.stream().flatMap(lst -> lst.stream())
-				.map(item -> item.toUpperCase()).toList();
+				.map(item -> item.toUpperCase()).collect(Collectors.toList());
 		
 		System.out.println(newFruits);
 		
@@ -140,7 +140,7 @@ public class EngineeringDigestStreamDemo {
 		
 		List<String> words = sentence.stream()
 				.flatMap(word-> Arrays.stream(word.split(" ")))
-				.map(String::toUpperCase).toList();
+				.map(String::toUpperCase).collect(Collectors.toList());
 		
 		System.out.println(words);
 		

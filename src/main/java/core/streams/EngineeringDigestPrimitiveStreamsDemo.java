@@ -21,7 +21,7 @@ public class EngineeringDigestPrimitiveStreamsDemo {
 		
 		DoubleStream doubleStream = new Random().doubles(5);
 		//System.out.println("Sum: "+doubleStream.sum());
-		System.out.println(doubleStream.boxed().toList());
+		System.out.println(doubleStream.boxed().collect(Collectors.toList()));
 		
 		IntStream intStream = new Random().ints();
 	}

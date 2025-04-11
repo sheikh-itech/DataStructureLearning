@@ -1,0 +1,89 @@
+
+		Arrays in Java – A Complete Guide
+	------------------------------------------
+	
+An array is a fixed-size, contiguous data structure that stores elements of the same data type 
+in memory.
+
+It provides fast access to elements using an index but has a fixed size.
+
+
+1. One-Dimensional Arrays
+-------------------------
+		
+		A single row of elements stored in contiguous memory
+
+		int[] arr = {10, 20, 30, 40};
+		
+
+2. Multi-Dimensional Arrays
+---------------------------
+
+		Arrays that store elements in multiple dimensions (like matrices)
+
+		int[][] matrix = { {1, 2, 3}, {4, 5, 6} }
+
+
+3. Jagged Arrays
+----------------
+
+		An array of arrays, where each row can have a different number of columns
+		
+		int[][] jaggedArray = new int[3][];
+		jaggedArray[0] = new int[]{1, 2};
+		jaggedArray[1] = new int[]{3, 4, 5};
+		jaggedArray[2] = new int[]{6};
+
+
+Circular Array (Ring Buffer)
+============================
+		It uses two/2 pointers
+		Instead of shifting elements when inserting/removing
+
+Front Pointer [head]
+--------------------
+→ Points to the first element
+
+Rear Pointer [tail]
+-------------------
+→ Points to the last element
+
+=> Size decreases, but the old value remains in memory [overwritten later]
+
+=> The element is no longer accessible because front has moved past it
+
+=> When the tail reaches the end of the array, it wraps around to the beginning
+
+=> Commonly used in circular queues, buffering systems, and scheduling algorithms
+
+
+Memory Management in Java Arrays
+--------------------------------
+In Java JVM handles memory allocation and garbage collection
+
+
+	1. Heap Memory:– Arrays are stored in heap, and reference is kept in stack
+	2. Fixed Size:– Once allocated, array size cannot change
+	3. Contiguous Memory Allocation:– Elements are stored sequentially, ensuring fast access
+	4. Garbage Collection:– If an array is no longer referenced, the JVM will clean it up
+
+
+How Java Handles Arrays Internally
+==================================
+
+	1. Array Initialization:
+			Java initializes arrays with default values [0 for int, null for objects]
+	
+	2. Array Indexing:
+			Java uses zero-based indexing [arr[0] is the first element]
+			
+	3. Bounds Checking:
+			Java prevents accessing out-of-bounds elements [ArrayIndexOutOfBoundsException]
+			
+	4. Garbage Collection
+			If an array is no longer referenced, Java’s Garbage Collector cleans it up
+
+
+
+
+

@@ -10,10 +10,10 @@ public class EnumSetDemo {
 
 	public static void main(String[] args) {
 		
-		enum Day { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY }
-		
 		Set<Day> enumSet = EnumSet.of(Day.MONDAY, Day.FRIDAY);
 		
 		System.out.println(enumSet);
 	}
 }
+
+enum Day { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY }
