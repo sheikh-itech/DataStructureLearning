@@ -11,7 +11,7 @@ public class FileInputStreamDemo {
 		
 		int val=0;
 		while((val = stream.read())!=-1) {
-			System.out.print((char)val);
+			System.out.print((char)val);	// To Convert Bytes to Actual Data
 		}
 		
 		stream.close();

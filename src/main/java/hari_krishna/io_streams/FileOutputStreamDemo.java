@@ -7,9 +7,9 @@ public class FileOutputStreamDemo {
 
 	public static void main(String[] args) throws Exception {
 
-		FileOutputStream stream = new FileOutputStream(new File("files/DataInputOutputStream.txt"), true);
+		FileOutputStream stream = new FileOutputStream(new File("files/FileInputOutputStream.txt"), true);
 		
-		stream.write(97);
+		stream.write(97); // Writes in ASCII characters
 		stream.write(98);
 		stream.write(99);
 		stream.write('a');

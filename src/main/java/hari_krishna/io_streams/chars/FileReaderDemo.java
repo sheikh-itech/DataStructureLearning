@@ -1,4 +1,4 @@
-package hari_krishna.io_streams;
+package hari_krishna.io_streams.chars;
 
 import java.io.File;
 import java.io.FileNotFoundException;
