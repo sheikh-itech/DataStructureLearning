@@ -97,6 +97,8 @@ public class LambdaBasicDemo {
 	}
 }
 
+//Functional Interfaces with exact 1 method
+
 interface Demo1 {
 	
 	abstract void demo();

@@ -91,6 +91,8 @@ public class ArrayListDemo {
 		nums1.remove(Integer.valueOf(4));
 		System.out.println(nums1);
 		
+		// Convert List to Array
+		
 		Object[] nums2 = nums.toArray();
 		
 		//Specify type 'new Integer[0]' for int array, zero element array to specify type only

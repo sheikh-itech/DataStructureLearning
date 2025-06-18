@@ -69,3 +69,76 @@ Memoization with Lambdas
 Memoization is a technique for optimizing expensive function calls by caching results.
 Lambdas can be used with maps to create memoized functions
 
+--------------------------------------------------------------------
+
+Function
+--------
+IntFunction<R>, LongFunction<R>, DoubleFunction<R>
+ToIntFunction<T>, ToDoubleFunction<T>, ToLongFunction<T>
+IntToDoubleFunction, LongToIntFunction
+
+Predicate
+---------
+IntPredicate, LongPredicate, DoublePredicate
+
+Consumer
+--------
+IntConsumer, DoubleConsumer, LongConsumer
+
+Supplier
+--------
+BooleanSupplier, IntSupplier, LongSupplier
+
+
+Unary Variants
+--------------
+UnaryOperator<T>	--> Like Function<T, T>
+
+Binary Variants
+---------------
+BinaryOperator<T>	(T, T) -> T, like reduce()
+BiFunction<T, U, R>	Two inputs, one output
+BiPredicate<T, U>	Two inputs, boolean output
+BiConsumer<T, U>	Two inputs, no return
+
+-----------------------------------------------------
+
+java.util.function
+├── Predicate<T>
+│   ├── Primitive variants [IntPredicate]
+│   └── BiPredicate<T, U>
+├── Function<T, R>
+│   ├── UnaryOperator<T> 	[Primitive variants]
+│   ├── BinaryOperator<T> 	[Primitive variants]
+│   ├── BiFunction<T, U, R>
+│   └── To<Primitive variants>Function<T> [ToIntFunction]
+├── Consumer<T>
+│   ├── BiConsumer<T, U>
+│   └── Primitive variants [IntConsumer]
+├── Supplier<T>
+│   └── Primitive variants [IntSupplier]
+
+
+
+
+IntFunction<R>        vs       ToIntFunction<T>
+--------------------          ---------------------
+int ───────────> R            T ─────────────> int
+   (primitive)                   (object)
+
+
+UnaryOperator
+-------------
+A UnaryOperator<T> is a special type of Function<T, T> that takes a single input and 
+returns a result of the same type
+
+
+BinaryOperator
+--------------
+A BinaryOperator<T> is a special type of BiFunction<T, T, T> 
+that takes two inputs of the same type and returns a result of the same type
+
+
+
+
+

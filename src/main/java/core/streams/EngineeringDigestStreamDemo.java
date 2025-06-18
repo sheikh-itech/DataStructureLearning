@@ -83,6 +83,8 @@ public class EngineeringDigestStreamDemo {
 		
 // Sum of Numbers
 		
+		sum = nums.stream().reduce(Integer::sum).get();
+		
 		// 0 is the identity value for addition
 		sum = nums.stream().reduce(0, Integer::sum); // Accumulate sum
 		

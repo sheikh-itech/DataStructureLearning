@@ -23,6 +23,7 @@ public class ComparableBox<T extends ComparableBox<T>> {
 }
 
 class StringComparableBox extends ComparableBox<StringComparableBox> {
+	
     public StringComparableBox(String value) {
         super(value);
     }

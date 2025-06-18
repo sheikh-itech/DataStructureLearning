@@ -33,14 +33,18 @@ public class UnaryOperator_Example {
 }
 
 class Test {
+	
 	String name;
+	
 	Test(String name){
 		this.name = name;
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,6 +56,7 @@ class Test {
 		Test other = (Test) obj;
 		return Objects.equals(name, other.name);
 	}
+	
 	@Override
 	public String toString() {
 		return "{name: " + name + "}";

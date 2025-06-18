@@ -34,7 +34,8 @@ public class EngineeringDigestCollectorsDemo {
 		
 // Data summarizing, Generate statistic summary-> min, max, count, average, sum
 
-		IntSummaryStatistics statistic = nums.stream().collect(Collectors.summarizingInt(x->x));
+		IntSummaryStatistics statistic = nums.stream()
+				.collect(Collectors.summarizingInt(x->x));
 		
 		System.out.println(statistic.getAverage());
 		System.out.println(statistic.getSum());
@@ -49,7 +50,8 @@ public class EngineeringDigestCollectorsDemo {
 		// Grouping elements
 		
 		// Group-1
-		Map<Object, List<String>> group1 = names.stream().collect(Collectors.groupingBy(x->x.length()));
+		Map<Integer, List<String>> group1 = names.stream()
+				.collect(Collectors.groupingBy(x->x.length()));
 		//Map<Object, List<String>> group1 = names.stream().collect(Collectors.groupingBy(String::length));
 		System.out.println(group1);
 		
@@ -113,7 +115,7 @@ public class EngineeringDigestCollectorsDemo {
 		
 		List<String> fruit = Arrays.asList("Apple", "Banana", "Papaya", "Graps");
 		
-		Map<Object, Integer> fruitMap = fruit.stream()
+		Map<String, Integer> fruitMap = fruit.stream()
 				.collect(Collectors.toMap(x->x.toUpperCase(), x->x.length()));
 		System.out.println(fruitMap);
 		

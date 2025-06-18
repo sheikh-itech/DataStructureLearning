@@ -15,7 +15,7 @@ public class ListExcersize {
 		List<Integer> filteredList = nums.stream().filter(n -> n%2==0).collect(Collectors.toList());
 		System.out.println(filteredList);
 		
-		// Devide by 2 all elements
+		// Divide by 2 all elements
 		List<Integer> halfList = filteredList.stream().map(n -> n/2).collect(Collectors.toList());
 		System.out.println(halfList);
 		
